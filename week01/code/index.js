@@ -12,7 +12,7 @@
 
 //This is fine with "use strict"
 var a = 10;
-//But this is not allowed and will cause a ReferenceError. In order to solve this we must *declare* b with either var, let or const.
+//But this is not allowedpy and will cause a ReferenceError. In order to solve this we must *declare* b with either var, let or const.
 //b = 100;
 
 
