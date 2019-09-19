@@ -40,12 +40,12 @@ Difference - Table puts data into a table, while group puts associated into a ex
 */
 //Examples of both
 let objArray = [];
-for (let i=0; i<10; i++){
+for (let i = 0; i < 10; i++) {
     //Adding objet properties individually
     let obj = {};
     obj["first"] = i;
-    obj["second"] = i*10;
-    obj["third"] = i/3.14;
+    obj["second"] = i * 10;
+    obj["third"] = i / 3.14;
 
     //Object literal definition
     // let obj = {
@@ -62,7 +62,7 @@ console.table(objArray);
 console.table([{
     "First column": objArray[3].first,
     "Second column": objArray[3].third,
-},{
+}, {
     "First column": objArray[5].first,
     "Second column": objArray[5].third,
 }
@@ -80,22 +80,22 @@ console.groupEnd(label);
 /* ...And also, template literals */
 
 //We talked last week about typeof:
-console.log(typeof(objArray));
+console.log(typeof (objArray));
 console.log(typeof objArray);
 //typeof is used to identify the type of a variable.
 //typeof (and other useful function we'll look at in minute) can be used in if-statement as safety checks, or to preface console messages, etc.
-if(typeof(objArray) == "object"){
+if (typeof (objArray) == "object") {
     //A console message with a template literal (we need to use backticks)
     console.log(`It's an ${typeof objArray}`);
-}else{
+} else {
     console.log("Not an object");
 }
 
 let input = 22;
-if(typeof(input) == "number"){
+if (typeof (input) == "number") {
     //A console message with a template literal:
     console.log(`input is a ${typeof input} and its value is ${input}`);
-}else {
+} else {
     console.log("input is not a number");
 }
 
@@ -110,9 +110,9 @@ let concatString = "This string contins the variable: " + input + " and here is 
 //isNaN is also a very useful function, used to determine if a name binding is not a number
 console.log(isNaN(input)); //false because input is a number
 console.log(isNaN(objArray)); //true because objArray is an object
-let arrOfNumbers = [1,2,3,4]
+let arrOfNumbers = [1, 2, 3, 4]
 console.log(isNaN(arrOfNumbers)); //true because the engine recognizes we have an array of numbers.
-let arrOfMostlyNumbers = [1,2,3,"four"];
+let arrOfMostlyNumbers = [1, 2, 3, "four"];
 console.log(isNaN(arrOfNumbers));
 let notANumber = ["four"];
 console.log(isNaN(notANumber));
@@ -126,3 +126,46 @@ console.log(isNaN(aNumber)); //false
 aNumber = "forty two";
 console.log(typeof aNumber); //string
 console.log(isNaN(aNumber)); //true - this is where isNan is useful
+
+/* FUNCTIONS */
+
+/* HOISTED: lifted up*/
+
+// Basic function declaration - how to write a function that checks if a value is greater
+// than particular target value
+function isGreaterThan(value, target) {
+    if (value > target) {
+        // return `${value} is greater than ${target}`;
+        // return value - target;
+        // return `${value} is greater than ${target} by ${value - target}`;
+        return true;
+    }
+    return false;
+}
+
+function isGreaterThan10(value) {
+    if (value > 10) {
+        return true;
+    }
+    return false;
+}
+
+// Javascript ignores etra arguments
+isGreaterThan(100, 1000, 3, -4);
+
+//Function expression
+//Also called anonymous functions - these are functions officially without a name, most often used 
+// as callbacks, but are also the original form of function statement in JS.
+let sum = function (valueA, valueB) {
+    return valueA + valueB;
+};
+
+// We use it exactly the same way:
+sum(4, 6); //Returns 10
+
+//we'll use this fom - the function expression - less than the function declaration, but it still has its uses - most often
+// in callbacks, promises, high-order functions (functional programming). Or, more often we'll use it in another form the
+// arrow function:
+
+let add = (valueA, valueB) => valueA + valueB
+
