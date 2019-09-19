@@ -75,3 +75,54 @@ console.log(objArray[3]);
 console.log(objArray[7]);
 console.log(objArray[9]);
 console.groupEnd(label);
+
+/* Some useful JS functions */
+/* ...And also, template literals */
+
+//We talked last week about typeof:
+console.log(typeof(objArray));
+console.log(typeof objArray);
+//typeof is used to identify the type of a variable.
+//typeof (and other useful function we'll look at in minute) can be used in if-statement as safety checks, or to preface console messages, etc.
+if(typeof(objArray) == "object"){
+    //A console message with a template literal (we need to use backticks)
+    console.log(`It's an ${typeof objArray}`);
+}else{
+    console.log("Not an object");
+}
+
+let input = 22;
+if(typeof(input) == "number"){
+    //A console message with a template literal:
+    console.log(`input is a ${typeof input} and its value is ${input}`);
+}else {
+    console.log("input is not a number");
+}
+
+//The advantage of both double and single quotes:
+let quotedString = "This string 'contains a quote'.";
+//the other option is to use escape characters:
+let secondQuoteString = "This string also \"has a quote\"";
+//To add a variable or aditional content to a regulr string, we hate to use concatenation:
+let concatString = "This string contins the variable: " + input + " and here is the rest of the string.";
+//this is solved by template literals - see above.
+
+//isNaN is also a very useful function, used to determine if a name binding is not a number
+console.log(isNaN(input)); //false because input is a number
+console.log(isNaN(objArray)); //true because objArray is an object
+let arrOfNumbers = [1,2,3,4]
+console.log(isNaN(arrOfNumbers)); //true because the engine recognizes we have an array of numbers.
+let arrOfMostlyNumbers = [1,2,3,"four"];
+console.log(isNaN(arrOfNumbers));
+let notANumber = ["four"];
+console.log(isNaN(notANumber));
+
+//Where is this useful? We have user input that is storing data in a variable that we have previously defined as a number.
+// [Incorrect] We know from last week that typeof will not work to recognize that the value in this variable is not a number, bevause the engine
+// will always refer to it as a number type, even if we change the value to smoething else.
+let aNumber = 42;
+console.log(typeof aNumber); //number
+console.log(isNaN(aNumber)); //false
+aNumber = "forty two";
+console.log(typeof aNumber); //string
+console.log(isNaN(aNumber)); //true - this is where isNan is useful
