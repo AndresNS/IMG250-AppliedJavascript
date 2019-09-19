@@ -2,8 +2,8 @@
 var value;
 Math.abs(value);
 
-//== allows coercion
-//=== strict equality operator 
+// == allows coercion
+// === strict equality operator 
 
 //Case Study #1
 
