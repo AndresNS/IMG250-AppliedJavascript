@@ -21,8 +21,7 @@ if (secondIndex == -1 && firstIndex != -1) {
 let firstName;
 let middleName;
 let lastName;
-console.log("firstindex: " + firstIndex);
-console.log("secondindex: " + secondIndex);
+
 if (firstIndex == -1 && secondIndex == -1) { //Only one name entered
   firstName = fullName;
   middleName = "Not entered";
@@ -30,24 +29,26 @@ if (firstIndex == -1 && secondIndex == -1) { //Only one name entered
 } else if (firstIndex > 0 && secondIndex == -1) { //Two names entered
   firstName = fullName.substring(0, firstIndex);
   middleName = "Not entered";
-  let lastName = fullName.substring(secondIndex + 1);
-} else {
+  lastName = fullName.substring(firstIndex + 1);
+} else { // three names entered
   firstName = fullName.substring(0, firstIndex);
   middleName = fullName.substring(firstIndex + 1, secondIndex);
   lastName = fullName.substring(secondIndex + 1);
 }
 
-// let program = prompt("What program are you in?");
-// let gradYear = prompt("What year do you expect to graduate?");
-// //Include console error here to address scenario where a non-numeric value is entered for gradYear
+let program = prompt("What program are you in?");
+let gradYear = prompt("What year do you expect to graduate?");
+//Include console error here to address scenario where a non-numeric value is entered for gradYear
+if(isNaN(gradYear)){
+console.error("Error: you must entered a numeric value for Graduation Year.");
+}
+let numCourses = prompt("How many courses are you currently taking?");
+//Include console error here to address scenario where a non-numeric value is entered for numCourses
 
-// let numCourses = prompt("How many courses are you currently taking?");
-// //Include console error here to address scenario where a non-numeric value is entered for numCourses
-
-// let currentCourses = [];
-// for (let i = 0; i < numCourses; i++) {
-//   currentCourses.push(prompt("Enter the name of one of the courses you are currently taking"));
-// };
+let currentCourses = [];
+for (let i = 0; i < numCourses; i++) {
+  currentCourses.push(prompt("Enter the name of one of the courses you are currently taking"));
+};
 
 let student = {
   firstName: firstName,
