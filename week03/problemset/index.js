@@ -12,7 +12,7 @@ function greeting(name) {
 }
 
 //So, to get the expected behavior, we pass a name to the function in order to print in console the return value of the greeting function.
-console.log(greeting("Andres"));
+console.log(`%c ${greeting("Andres")} `, "background: #9bd69a;");
 
 //Also, I tried to use console.log to print the function without giving it an argument and see what happens.
 console.log(greeting());
@@ -39,7 +39,7 @@ function multiply(num1, num2) {
 }
 
 // I wanted to know if we can put a function as a template literal, and it works!
-console.log(`Result using the function: ${multiply(3, 4)}`);
+console.log(`%c Result using the function: ${multiply(3, 4)} `, "background: #9bd69a;");
 
 
 
@@ -76,3 +76,44 @@ console.log(`%c Minimum value: ${getMinimum(numArray)} `, "background: #9bd69a;"
 /************ QUESTION 4 ************/
 // 4. Write a function that accepts two numeric arguments called start and end and returns an array containing all the numbers from start up to (and including) end. BONUS: Add a third argument called step that defines the increment for each array element. Meaning, if step = 3, each subsequent array element should go up by increments of 3; if step = 2, then each subsequent array element should go up by increments of 2; if step is not included array elements should be incremented by 1. Negative step numbers should populate the array in reverse (from end to start) by the given increment.
 console.log("\n---\n%c QUESTION 4:", "background: #236287; color: #fff;font-size: 1.5em;padding:5px 10px;");
+
+function generateArray(start, end, step) {
+    //Check start, end and step values:
+    console.log(`Start: ${start}`);
+    console.log(`End: ${end}`);
+    console.log(`Step: ${step}`);
+
+    let myArray = [];
+
+    if (step != null) { // Check if step value was entered
+        if (step > 0) {
+            for (let i = start; i <= end; i = i + step) {
+                myArray.push(i);
+            }
+        } else if (step < 0) {
+            for (let i = start; i >= end; i = i + step) {
+                myArray.push(i);
+            }
+        } else { //step == 0
+            console.error("Step must be different than 0 in order to generate an array.");
+        }
+    } else { // No step value
+        for (let i = start; i <= end; i++) {
+            myArray.push(i);
+        }
+    }
+
+    return myArray;
+}
+
+//no step
+console.log(`%c Array: [${generateArray(0, 20)}] \n`, "background: #9bd69a;");
+
+//step > 0
+console.log(`%c Array: [${generateArray(0, 20, 2)}] \n`, "background: #9bd69a;");
+
+//step < 0
+console.log(`%c Array: [${generateArray(20, 0, -4)}] \n`, "background: #9bd69a;");
+
+//step = 0
+console.log(`%c Array: [${generateArray(0, 20, 0)}] \n`, "background: #9bd69a;");
