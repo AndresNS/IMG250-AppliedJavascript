@@ -32,3 +32,4 @@ let greet2 = function(firstName, lastName){
 
 //Note that function expressions are still called the same way as normal functions.
 greet2("andres","navarro");
+

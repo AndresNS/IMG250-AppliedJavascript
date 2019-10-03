@@ -1,87 +1,119 @@
-/*1. The prompt function can be used to get a short amount of input from an end-user. You can store values recorded via prompt as follows:
+"use strict";
 
-let userInput = prompt("Please enter a numeric value")
+/************ QUESTION 1 ************/
+// 1. Given the following code snippet complete the function body so that the argument name is used in a greeting that is printed to the console using a console.log message. Please use template literals, and not standard strings.
+console.log("%cQUESTION 1:", "background: #236287; color: #fff;font-size: 1.5em;padding:5px 10px;");
 
-Use prompt to collect a numeric value and write an if-else loop to alert: "positive", if the number is greater than 0; "negative", if the number is less than 0; or "zero" if the number is zero.
-*/
+function greeting(name) {
+    //Check the value of "name" before returning it
+    console.log(`Value of 'name' before returning it: ${name}`);
 
-//don't forget to comment the code from the other questions before running it.
-let tryAgain = true;
-while (tryAgain) {
-
-    let userInput = prompt("Please enter a numeric value.");
-
-    if (userInput > 0) {
-        alert("positive");
-    } else if (userInput < 0) {
-        alert("negative");
-    } else {
-        alert("zero");
-    }
-
-    if (!confirm("Try with another number?")) {
-        tryAgain = false;
-    }
+    return `Hello, ${name}!`;
 }
 
-// 2. Copy the code from question 1 and modify it to put in a safety check so that the userInput isn't evaluated unless it is the correct type of input.
+//So, to get the expected behavior, we pass a name to the function in order to print in console the return value of the greeting function.
+console.log(`%c ${greeting("Andres")} `, "background: #9bd69a;");
 
-//don't forget to comment the code from the other questions before running it.
-let tryAgain = true;
-while (tryAgain) {
+//Also, I tried to use console.log to print the function without giving it an argument and see what happens.
+console.log(greeting());
+//We got the message "Hello, undefined", because the parameter "name" has no value in it.
 
-    let userInput = prompt("Please enter a numeric value.");
 
-    if (isNaN(userInput)) { // I tried to use typeof to check is the value was a number, but for some reason when I typed a string it said it was zero, so I decided to use isNaN instead.
-        alert("Only numeric values are accepted.");
-    } else {
-        if (userInput > 0) {
-            alert("positive");
-        } else if (userInput < 0) {
-            alert("negative");
-        } else {
-            alert("zero");
+
+/************ QUESTION 2 ************/
+// 2. Write a function that accepts two numbers as arguments, multiplies them together and returns the product.
+console.log("\n---\n%cQUESTION 2:", "background: #236287; color: #fff;font-size: 1.5em;padding:5px 10px;");
+
+function multiply(num1, num2) {
+    //Check the numbers entered before multiplying them.
+    console.log(`Value of 'num1' before multiplication: ${num1}`);
+    console.log(`Value of 'num2' before multiplication: ${num2}`);
+
+    let result;
+    result = num1 * num2;
+
+    //Check the result before returning it
+    console.log(`${num1} * ${num2} = ${result}`);
+
+    return result;
+}
+
+// I wanted to know if we can put a function as a template literal, and it works!
+console.log(`%c Result using the function: ${multiply(3, 4)} `, "background: #9bd69a;");
+
+
+
+/************ QUESTION 3 ************/
+// 3. Write a function that accepts an array of numbers as an argument. The function should iterate through the array and find the smallest, or minimum value. BONUS: Ensure your function works with arrays containing both positive and negative numbers. (Do not use any Math functions, such as Math.min() in solving this problem).
+
+console.log("\n---\n%cQUESTION 3:", "background: #236287; color: #fff;font-size: 1.5em;padding:5px 10px;");
+
+
+function getMinimum(array) {
+    let min = array[0];
+    for (let i = 0; i < array.length; i++) {
+
+        //Check the current value in the loop
+        console.log(`%cChecking index ${i} of the array: ${array[i]}`, "background: #ddd;");
+
+        //Compare the minimum value so far with the current value
+        if (array[i] < min) {
+            min = array[i];
         }
+        console.log(`The minimum value so far is: ${min}`);
     }
 
-    if (!confirm("Try with another number?")) {
-        tryAgain = false;
-    }
-}
-
-// 3. Write a for loop that outputs only even numbers between 0 and 100.
-
-//don't forget to comment the code from the other questions before running it.
-for (let i = 0; i < 101; i++) {
-    if (i % 2 == 0) {
-        console.log(i);
-    }
+    //Check the minimun value before returning it
+    console.log(`Minimun value before return: ${min}`);
+    return min;
 }
 
 
-// 4. Write a for loop that outputs only prime numbers between 0 and 100.
+let numArray = [1, 0, 5, 4, -23, 0, 3.14159, -222, 132];
+console.log(`%c Minimum value: ${getMinimum(numArray)} `, "background: #9bd69a;");
 
-//don't forget to comment the code from the other questions before running it.
-let flag = true;
-let prime = true;
 
-for (let i = 3; i < 100; i++) {
+/************ QUESTION 4 ************/
+// 4. Write a function that accepts two numeric arguments called start and end and returns an array containing all the numbers from start up to (and including) end. BONUS: Add a third argument called step that defines the increment for each array element. Meaning, if step = 3, each subsequent array element should go up by increments of 3; if step = 2, then each subsequent array element should go up by increments of 2; if step is not included array elements should be incremented by 1. Negative step numbers should populate the array in reverse (from end to start) by the given increment.
+console.log("\n---\n%c QUESTION 4:", "background: #236287; color: #fff;font-size: 1.5em;padding:5px 10px;");
 
-    if (flag) {
-        console.log(2);
-        flag = false;
-    }
+function generateArray(start, end, step) {
+    //Check start, end and step values:
+    console.log(`Start: ${start}`);
+    console.log(`End: ${end}`);
+    console.log(`Step: ${step}`);
 
-    if (i % i == 0 && i % 2 != 0) {
-        for (let j = 3; j < i; j++) {
-            if (i % j == 0) {
-                prime = false;
+    let myArray = [];
+
+    if (step != null) { // Check if step value was entered
+        if (step > 0) {
+            for (let i = start; i <= end; i = i + step) {
+                myArray.push(i);
             }
+        } else if (step < 0) {
+            for (let i = start; i >= end; i = i + step) {
+                myArray.push(i);
+            }
+        } else { //step == 0
+            console.error("Step must be different than 0 in order to generate an array.");
         }
-        if (prime) {
-            console.log(i);
+    } else { // No step value
+        for (let i = start; i <= end; i++) {
+            myArray.push(i);
         }
-        prime = true
-
     }
+
+    return myArray;
 }
+
+//no step
+console.log(`%c Array: [${generateArray(0, 20)}] \n`, "background: #9bd69a;");
+
+//step > 0
+console.log(`%c Array: [${generateArray(0, 20, 2)}] \n`, "background: #9bd69a;");
+
+//step < 0
+console.log(`%c Array: [${generateArray(20, 0, -4)}] \n`, "background: #9bd69a;");
+
+//step = 0
+console.log(`%c Array: [${generateArray(0, 20, 0)}] \n`, "background: #9bd69a;");

@@ -1,8 +1,8 @@
 {
-  "name": "lesson",
+  "name": "img250-week3-lab",
   "version": "1.0.0",
   "description": "",
-  "main": "img250-week3-inClassCode.js",
+  "main": "img250-week3-lab.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^6.4.0"
+    "eslint": "^6.5.1"
   }
 }

@@ -2,27 +2,16 @@
 
 let proceed = true;
 let animals = [];
-var animalCount = 0;
 while (proceed) {
 	let animal = {};
-    
-	try {
-		animal.type = prompt("Enter a type of animal");
-		if (animal.type === "") {
-			throw(new Error("Empty string!"));
-		}
-	}
-	catch(error) {
-		console.error(error);
-	}
+	animal.type = prompt("Enter a type of animal");
 	animal.name = prompt("Enter the name of the animal");
 	animal.food = prompt("Enter the animal's favourite food");
 	animal.tired = prompt("Is the animal tired?");
-    
-	animals[animalCount] = animal;
-	animalCount += 1;
 
-	if (animal.type == "" && animal.name == "" && animal.food == "" && animal.tired == "") { 
+	animals.push(animal);
+
+	if (animal.type == "" && animal.name == "" && animal.food == "") {
 		proceed = false; 
 	}
 }
@@ -43,15 +32,15 @@ function walk(animals) {
 		}
 		message += "You take ";
 		if (toWalk.length > 1) {
-			for (let i=0;i<toWalk.length-1;i++) {
+			for (i;i<toWalk.length-1;i++) {
 				message += "the " + toWalk[i].type + " named " + toWalk[i].name + ", ";
 			}
 			message += "and the ";
 		}
-		message += toWalk[toWalk.length-1].type + " named " + toWalk[toWalk.length-1].name +  " for a walk.";
+		message += toWalk[toWalk.length].type + " named " + toWalk[toWalk.length].name +  " for a walk.";
 	} else {
-		if (!animals[0].exercised) {
-			message += "You take the " + animals[0].type + " named " + animals[0].name + " for a walk.";
+		if (!animals[0].tired) {
+			message += "You take the " + animals[0].type + " named " + animals[0].nome + " for a walk.";
 		}
 	}
 	if (message !== "") {
